@@ -440,8 +440,7 @@ void process()
 
         g_camera_lidar_queue.m_last_visual_time = -3e8;
         TicToc t_s;
-        for (auto &measurement : measurements)
-        {
+        for (auto &measurement : measurements){
             auto img_msg = measurement.second;
             int if_camera_can_update = 1;
             double cam_update_tim = img_msg->header.stamp.toSec() + estimator.td;
@@ -455,7 +454,6 @@ void process()
                 {
                     std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 }
-
                 lock_lio(estimator);
                 t_s.tic();
                 double camera_LiDAR_tim_diff = img_msg->header.stamp.toSec() + g_camera_lidar_queue.m_camera_imu_td - g_lio_state.last_update_time;

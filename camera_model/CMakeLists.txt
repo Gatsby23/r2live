@@ -13,10 +13,15 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(Boost REQUIRED COMPONENTS filesystem program_options system)
 include_directories(${Boost_INCLUDE_DIRS})
 
-find_package(OpenCV REQUIRED)
-
+set(OpenCV_DIR /usr/local/opencv3.4.1/share/OpenCV)
+find_package(OpenCV 3.4.1 REQUIRED)
+include_directories(SYSTEM ${OpenCV_INCLUDE_DIRS} /usr/local/opencv3.4.1/include)
+link_directories(${OpenCV_LIBS} /usr/local/opencv3.4.1/lib)
+find_package(Eigen3 REQUIRED)
+include_directories(${EIGEN3_INCLUDE_DIR})
 # set(EIGEN_INCLUDE_DIR "/usr/local/include/eigen3")
-find_package(Ceres REQUIRED)
+set(Ceres_DIR /usr/local/ceres-1.14/lib/cmake/Ceres)
+find_package(Ceres 1.14 REQUIRED)
 include_directories(${CERES_INCLUDE_DIRS})
 
 

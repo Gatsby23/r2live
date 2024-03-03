@@ -31,11 +31,16 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(OpenMP QUIET)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}   ${OpenMP_C_FLAGS}")
-find_package(OpenCV REQUIRED)
+set(OpenCV_DIR /usr/local/opencv3.4.1/share/OpenCV)
+find_package(OpenCV 3.4.1 REQUIRED)
+include_directories(SYSTEM ${OpenCV_INCLUDE_DIRS} /usr/local/opencv3.4.1/include)
+link_directories(${OpenCV_LIBS} /usr/local/opencv3.4.1/lib)
 
 # message(WARNING "OpenCV_VERSION: ${OpenCV_VERSION}")
 
-find_package(Ceres REQUIRED)
+set(Ceres_DIR /usr/local/ceres-1.14/lib/cmake/Ceres)
+find_package(Ceres 1.14 REQUIRED)
+include_directories(${CERES_INCLUDE_DIRS})
 find_package(PCL REQUIRED)
 
 find_package(PythonLibs REQUIRED)
